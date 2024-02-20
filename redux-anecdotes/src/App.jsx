@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { actionCreate, actionVote } from './reducers/anecdoteReducer.js'
+import AnecdoteForm from './components/AnecdoteForm.jsx'
 
 const generateId = () => Number((Math.random() * 1000000).toFixed(0))
 
@@ -10,12 +11,6 @@ const App = () => {
   const vote = (id) => {
     console.log('vote', id)
     dispatch(actionVote(id))
-  }
-
-  const handleCreate = (e) => {
-    e.preventDefault()
-    const content = e.target.anecdote.value
-    dispatch(actionCreate(content))
   }
 
   return (
@@ -35,11 +30,7 @@ const App = () => {
           </div>
         )
       }
-      <h2>create new</h2>
-      <form onSubmit={handleCreate}>
-        <div><input name="anecdote" /></div>
-        <button type="submit">create</button>
-      </form>
+      <AnecdoteForm />
     </div>
   )
 }
