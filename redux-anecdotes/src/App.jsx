@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 
+const generateId = () => Number((Math.random() * 1000000).toFixed(0))
+
 const App = () => {
   const anecdotes = useSelector(state => state)
   const dispatch = useDispatch()
@@ -9,6 +11,18 @@ const App = () => {
     dispatch({
       type: 'VOTE',
       payload: { id }
+    })
+  }
+
+  const handleCreate = (e) => {
+    e.preventDefault()
+    console.log(e.target.anecdote.value)
+    dispatch({
+      type: 'CREATE',
+      payload: {
+        id: generateId(),
+        content: e.target.anecdote.value,
+      }
     })
   }
 
@@ -27,9 +41,9 @@ const App = () => {
         </div>
       )}
       <h2>create new</h2>
-      <form>
-        <div><input /></div>
-        <button>create</button>
+      <form onSubmit={handleCreate}>
+        <div><input name="anecdote" /></div>
+        <button type="submit">create</button>
       </form>
     </div>
   )

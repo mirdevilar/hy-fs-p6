@@ -29,6 +29,12 @@ const reducer = (state = initialState, action) => {
         { ...a, votes: a.votes + 1 } :
         a
       )
+    case 'CREATE':
+      return [ ...state,
+        { ...action.payload,
+          votes: action.payload.votes || 0
+        },
+      ]
     default:
       return state
   }
