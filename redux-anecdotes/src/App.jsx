@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { actionCreate, actionVote } from './reducers/anecdoteReducer.js'
 
 const generateId = () => Number((Math.random() * 1000000).toFixed(0))
 
@@ -8,22 +9,13 @@ const App = () => {
 
   const vote = (id) => {
     console.log('vote', id)
-    dispatch({
-      type: 'VOTE',
-      payload: { id }
-    })
+    dispatch(actionVote(id))
   }
 
   const handleCreate = (e) => {
     e.preventDefault()
-    console.log(e.target.anecdote.value)
-    dispatch({
-      type: 'CREATE',
-      payload: {
-        id: generateId(),
-        content: e.target.anecdote.value,
-      }
-    })
+    const content = e.target.anecdote.value
+    dispatch(actionCreate(content))
   }
 
   return (
