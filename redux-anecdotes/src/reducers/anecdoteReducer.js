@@ -13,18 +13,13 @@ const slice = createSlice({
   initialState: [],
   reducers: {
     actionVote(state, action) {
-      return state.map(a => a.id === action.payload.id ?
-        { ...a, votes: a.votes + 1 } :
-        a
+      return state.map(a => a.id === action.payload.id
+        ? { ...a, votes: a.votes + 1 } 
+        : a
       )
     },
     actionCreate(state, action) {
-      return [ ...state,
-        { ...action.payload,
-          id: generateId(),
-          votes: action.payload.votes || 0,
-        },
-      ]
+      return [ ...state, action.payload ]
     },
     actionSetAnecdotes(state, action) {
       return action.payload
