@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { actionCreate } from '../reducers/anecdoteReducer.js'
+import { actionCreate } from '../reducers/anecdoteReducer'
+import { actionSetNotification, actionResetNotification } from '../reducers/notificationReducer'
 
 const AnecdoteForm = () => {
   const dispatch = useDispatch()
@@ -8,6 +9,11 @@ const AnecdoteForm = () => {
     e.preventDefault()
     const content = e.target.anecdote.value
     dispatch(actionCreate({ content }))
+    dispatch(actionSetNotification({ content: `Created note "${content}"!` }))
+    setTimeout(() => {
+      dispatch(actionResetNotification())
+    }, 5000);
+
   }
 
   return (
