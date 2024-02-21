@@ -1,4 +1,4 @@
-const reducer = (state = '', action) => {
+const reducer = (state = { content: '' }, action) => {
   switch (action.type) {
     case 'SET_FILTER':
       return action.payload
@@ -7,11 +7,11 @@ const reducer = (state = '', action) => {
   }
 }
 
-export const actionSetFilter = (value) => {
+export const actionSetFilter = (content) => {
   return {
     type: 'SET_FILTER',
     payload: {
-      value
+      content
     }
   }
 }
