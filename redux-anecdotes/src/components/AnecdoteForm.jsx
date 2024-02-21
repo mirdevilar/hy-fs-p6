@@ -7,7 +7,7 @@ const AnecdoteForm = () => {
   const handleCreate = (e) => {
     e.preventDefault()
     const content = e.target.anecdote.value
-    dispatch(actionCreate(content))
+    dispatch(actionCreate({ content }))
   }
 
   return (

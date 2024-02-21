@@ -1,4 +1,3 @@
-import { createStore, combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 
 import anecdoteReducer from './reducers/anecdoteReducer'
