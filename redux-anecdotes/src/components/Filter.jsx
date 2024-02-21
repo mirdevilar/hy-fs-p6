@@ -5,7 +5,7 @@ const Filter = () => {
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
-    dispatch(actionSetFilter(e.target.value))
+    dispatch(actionSetFilter({ content: e.target.value }))
   }
 
   const style = {
