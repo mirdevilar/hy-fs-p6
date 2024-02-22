@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { actionCreate } from '../reducers/anecdoteReducer'
+import { actionCreateAnecdote } from '../reducers/anecdoteReducer'
 import anecdoteService from '../services/anecdotes'
 import { actionSetNotification, actionResetNotification } from '../reducers/notificationReducer'
 
@@ -9,8 +9,7 @@ const AnecdoteForm = () => {
   const handleCreate = async (e) => {
     e.preventDefault()
     const content = e.target.anecdote.value
-    const anecdote = await anecdoteService.create({ content })
-    dispatch(actionCreate(anecdote))
+    dispatch(actionCreateAnecdote({ content }))
     dispatch(actionSetNotification({ content: `Created note "${content}"!` }))
     setTimeout(() => {
       dispatch(actionResetNotification())
