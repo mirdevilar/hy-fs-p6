@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react'
+import { useReducer, useEffect, useContext } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import NotificationContext from './NotificationContext'
 
@@ -7,23 +7,12 @@ import anecdoteService from './services/anecdotes'
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 
-const notificationReducer = (state, action) => {
-  switch (action.type) {
-  case 'SET':
-    return action.payload
-  case 'RESET':
-    return null
-  default:
-    return state
-  }
-}
-
 const App = () => {
   const queryClient = useQueryClient()
-  const [notification, notificationDispatch] = useReducer(notificationReducer, null) // useContext(NotificationContext)
+  const [notification, notificationDispatch] = useContext(NotificationContext)
 
   useEffect(() => {
-    notificationDispatch({ type: 'SET', payload: 'Test notification' })
+    notificationDispatch({ type: 'SET', payload: 'Test notificatifefefon' })
   })
 
   const voteMutation = useMutation({
@@ -63,10 +52,8 @@ const App = () => {
     <div>
       <h3>Anecdote app</h3>
 
-      <NotificationContext.Provider value={[notification, notificationDispatch]}>
-        <Notification />
-        <AnecdoteForm />
-      </NotificationContext.Provider>
+      <Notification />
+      <AnecdoteForm />
 
       {anecdotes.map((anecdote) => (
         <div key={anecdote.id}>
