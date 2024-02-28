@@ -89,6 +89,7 @@ module.exports = {
     "semi": ["error", "never"],
     "consistent-return": "off",
     "no-param-reassign": "off",
+    "spaced-commend": "off",
 
     // OVERRIDE AIRBNB
 
