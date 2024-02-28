@@ -87,8 +87,6 @@ module.exports = {
         "error", { "before": true, "after": true }
     ],
     "semi": ["error", "never"],
-    "consistent-return": "off",
-    "no-param-reassign": "off",
 
     // OVERRIDE AIRBNB
 
@@ -106,6 +104,5 @@ module.exports = {
     "no-console": 0,
     "no-alert": 0,
     "no-unused-vars": 0
-  }
 }
-
+}

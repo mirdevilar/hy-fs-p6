@@ -12,10 +12,9 @@ const App = () => {
     mutationFn: anecdoteService.update,
     onSuccess: (updatedAnecdote) => {
       const anecdotes = queryClient.getQueryData(['anecdotes'])
-      queryClient.setQueryData(['anecdotes'], anecdotes.map(a => a.id === updatedAnecdote.id
+      queryClient.setQueryData(['anecdotes'], anecdotes.map((a) => (a.id === updatedAnecdote.id
         ? updatedAnecdote
-        : a
-      ))
+        : a)))
     }
   })
 
@@ -39,27 +38,29 @@ const App = () => {
   if (result.status === 'error') {
     return <div>anecdote service not available due to problems in the server</div>
   }
-  
+
   const anecdotes = result.data
 
   return (
     <div>
       <h3>Anecdote app</h3>
-    
+
       <Notification />
       <AnecdoteForm />
-    
-      {anecdotes.map(anecdote =>
+
+      {anecdotes.map((anecdote) => (
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
           </div>
           <div>
-            has {anecdote.votes}
+            has
+            {' '}
+            {anecdote.votes}
             <button onClick={() => handleVote(anecdote)}>vote</button>
           </div>
         </div>
-      )}
+      ))}
     </div>
   )
 }
